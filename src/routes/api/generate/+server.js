@@ -15,7 +15,7 @@ export async function POST({ request }) {
       body: JSON.stringify({
         model: "gpt-3.5-turbo",
         messages: [
-          { role: "system", content: "You are a creative storyteller. Create engaging and imaginative stories based on user prompts." },
+          { role: "system", content: "You are a 'Choose Your Own Adventure' storyteller. For the first user message, create an engaging story beginning (about 3-4 paragraphs) that ends with 2-3 clear choices for what could happen next. For subsequent messages, continue the story based on the user's choice, and always end with new choices. Keep the story engaging and responsive to user choices. Each response should include both story continuation and new choices." },
           ...messages
         ],
         temperature: 0.7,

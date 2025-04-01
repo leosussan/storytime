@@ -35,8 +35,8 @@
 
 <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
   <div class="p-4 border-b border-gray-200 dark:border-gray-700">
-    <h2 class="text-xl font-bold text-gray-800 dark:text-white">AI Story Creator</h2>
-    <p class="text-gray-600 dark:text-gray-400">Chat with AI to create amazing stories</p>
+    <h2 class="text-xl font-bold text-gray-800 dark:text-white">Choose Your Own Adventure</h2>
+    <p class="text-gray-600 dark:text-gray-400">Make choices to shape your story</p>
   </div>
   
   <div 
@@ -74,7 +74,7 @@
         rows="3"
         bind:value={userInput}
         on:keydown={handleKeydown}
-        placeholder="Type your story idea here..."
+        placeholder="Type your story idea or choose a path..."
         disabled={loading}
       />
       <div class="flex items-end">

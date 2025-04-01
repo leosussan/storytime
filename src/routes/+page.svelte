@@ -2,7 +2,7 @@
   import ChatInterface from '$lib/components/ChatInterface.svelte';
   
   let messages = [
-    { role: 'assistant', content: 'Hello! I\'m your AI storyteller. What kind of story would you like me to create today?' }
+    { role: 'assistant', content: 'Welcome to Choose Your Own Adventure! Describe the kind of story you\'d like to begin (fantasy, sci-fi, mystery, etc.), and I\'ll create the opening scene with choices for you to direct where the story goes next.' }
   ];
   let loading = false;
   
@@ -46,7 +46,7 @@
 </script>
 
 <svelte:head>
-  <title>AI Story Creator</title>
+  <title>Choose Your Own Adventure</title>
 </svelte:head>
 
 <div class="h-full">
@@ -57,6 +57,6 @@
   />
   
   <div class="mt-2 text-center text-xs text-gray-500 dark:text-gray-400">
-    <p>Powered by OpenAI's GPT-3.5 Turbo</p>
+    <p>Powered by OpenAI's GPT-3.5 Turbo | Choose your path and shape your adventure</p>
   </div>
 </div>

@@ -56,7 +56,7 @@
     onSubmit={handleSubmit} 
   />
   
-  <div class="mt-2 text-center text-xs text-gray-500 dark:text-gray-400">
+  <div class="mt-1 mb-1 text-center text-xs text-gray-500 dark:text-gray-400">
     <p>Powered by OpenAI's GPT-3.5 Turbo | Choose your path and shape your adventure</p>
   </div>
 </div>

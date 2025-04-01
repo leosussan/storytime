@@ -41,7 +41,7 @@
   
   <div 
     bind:this={messagesContainer}
-    class="messages h-[calc(100vh-160px)] overflow-y-auto p-4 space-y-4 bg-gray-50 dark:bg-gray-900"
+    class="messages h-[calc(100vh-200px)] overflow-y-auto p-4 space-y-4 bg-gray-50 dark:bg-gray-900"
   >
     {#each messages as message}
       <div class="flex {message.role === 'user' ? 'justify-end' : 'justify-start'}">

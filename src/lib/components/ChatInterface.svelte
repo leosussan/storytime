@@ -1,17 +1,18 @@
 <script lang="ts">
   import { Avatar, Button, Spinner, Textarea } from 'flowbite-svelte';
+  import { onMount, afterUpdate } from 'svelte';
   import type { Message } from '$lib/types';
   
   export let messages: Message[] = [];
   export let loading = false;
-  export let onSubmit: (input: string) => void = () => {};
+  export let onSubmit: (input: string) => void;
   
   let userInput = '';
   let messagesContainer: HTMLElement;
   
   function handleSubmit() {
-    if (!userInput.trim()) return;
-    onSubmit(userInput);
+    if (!userInput.trim() || loading) return;
+    onSubmit(userInput.trim());
     userInput = '';
   }
   
@@ -23,8 +24,13 @@
   }
   
   // Auto-scroll to bottom when messages change
-  $: if (messagesContainer && messages) {
-    // Use requestAnimationFrame for better timing
+  afterUpdate(() => {
+    if (messagesContainer) {
+      scrollToBottom();
+    }
+  });
+  
+  function scrollToBottom() {
     requestAnimationFrame(() => {
       messagesContainer.scrollTo({
         top: messagesContainer.scrollHeight,
@@ -34,7 +40,7 @@
   }
 </script>
 
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+<div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden h-full flex flex-col">
   <div class="p-4 border-b border-gray-200 dark:border-gray-700">
     <h2 class="text-xl font-bold text-gray-800 dark:text-white">Choose Your Own Adventure</h2>
     <p class="text-gray-600 dark:text-gray-400">Choose from options, write your own path, or end the story anytime</p>
@@ -42,7 +48,7 @@
   
   <div 
     bind:this={messagesContainer}
-    class="messages h-[calc(100vh-200px)] overflow-y-auto p-4 space-y-4 bg-gray-50 dark:bg-gray-900"
+    class="messages flex-grow overflow-y-auto p-4 space-y-4 bg-gray-50 dark:bg-gray-900"
   >
     {#each messages as message}
       <div class="flex {message.role === 'user' ? 'justify-end' : 'justify-start'}">

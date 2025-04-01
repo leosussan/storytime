@@ -3,7 +3,12 @@ import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-	plugins: [sveltekit()],
+	plugins: [
+		sveltekit({
+			// Add this to ensure proper development server behavior with Cloudflare adapter
+			emulateCloudflare: true
+		})
+	],
 	test: {
 		workspace: [
 			{

@@ -1,7 +1,7 @@
 <script lang="ts">
   import ChatInterface from '$lib/components/ChatInterface.svelte';
   import ErrorMessage from '$lib/components/ErrorMessage.svelte';
-  import { Button } from 'flowbite-svelte';
+  import { Button, DarkMode } from 'flowbite-svelte';
   import { generateStoryContent } from '$lib/services/api';
   import { storyStore, loadingStore, errorStore } from '$lib/stores/storyStore';
   import { onMount } from 'svelte';
@@ -81,11 +81,14 @@
   
   <div class="flex justify-between items-center mb-4">
     <h1 class="text-2xl font-bold text-gray-800 dark:text-white">Your Adventure</h1>
-    {#if messages.length > 1}
-      <Button color="red" size="sm" on:click={resetStory}>
-        Reset Story
-      </Button>
-    {/if}
+    <div class="flex items-center gap-4">
+      {#if messages.length > 1}
+        <Button color="red" size="sm" on:click={resetStory}>
+          Reset Story
+        </Button>
+      {/if}
+      <DarkMode />
+    </div>
   </div>
   
   <div class="flex-grow flex flex-col min-h-0">

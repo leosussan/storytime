@@ -7,7 +7,4 @@
   <div class="container mx-auto px-4 py-2 min-h-screen max-w-4xl">
     <slot />
   </div>
-  <div class="fixed bottom-5 right-5 z-10">
-    <DarkMode />
-  </div>
 </div>

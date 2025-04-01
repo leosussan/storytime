@@ -23,9 +23,13 @@
   
   // Auto-scroll to bottom when messages change
   $: if (messagesContainer && messages) {
-    setTimeout(() => {
-      messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    }, 0);
+    // Use requestAnimationFrame for better timing
+    requestAnimationFrame(() => {
+      messagesContainer.scrollTo({
+        top: messagesContainer.scrollHeight,
+        behavior: 'smooth'
+      });
+    });
   }
 </script>
 

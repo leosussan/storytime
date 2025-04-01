@@ -67,7 +67,7 @@
   <meta name="description" content="Interactive storytelling where you choose your path" />
 </svelte:head>
 
-<div class="h-full flex flex-col p-4 max-w-4xl mx-auto">
+<div class="h-screen flex flex-col p-4 max-w-4xl mx-auto">
   {#if error}
     <div class="mb-4">
       <ErrorMessage message={error} />

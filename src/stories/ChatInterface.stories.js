@@ -1,6 +1,8 @@
+import type { Meta, StoryObj } from '@storybook/svelte';
 import ChatInterface from '../lib/components/ChatInterface.svelte';
+import type { Message } from '$lib/types';
 
-export default {
+const meta = {
   title: 'Components/ChatInterface',
   component: ChatInterface,
   argTypes: {
@@ -8,29 +10,27 @@ export default {
     loading: { control: 'boolean' },
     onSubmit: { action: 'submitted' }
   }
-};
+} satisfies Meta<ChatInterface>;
 
-const Template = (args) => ({
-  Component: ChatInterface,
-  props: args
-});
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Empty = Template.bind({});
-Empty.args = {
+export const Empty: Story = {
+  args: {
   messages: [],
   loading: false
 };
 
-export const WithWelcomeMessage = Template.bind({});
-WithWelcomeMessage.args = {
+export const WithWelcomeMessage: Story = {
+  args: {
   messages: [
     { role: 'assistant', content: 'Hello! I\'m your AI storyteller. What kind of story would you like me to create today?' }
   ],
   loading: false
 };
 
-export const WithConversation = Template.bind({});
-WithConversation.args = {
+export const WithConversation: Story = {
+  args: {
   messages: [
     { role: 'assistant', content: 'Hello! I\'m your AI storyteller. What kind of story would you like me to create today?' },
     { role: 'user', content: 'Can you write a short story about a space explorer?' },
@@ -39,8 +39,8 @@ WithConversation.args = {
   loading: false
 };
 
-export const Loading = Template.bind({});
-Loading.args = {
+export const Loading: Story = {
+  args: {
   messages: [
     { role: 'assistant', content: 'Hello! I\'m your AI storyteller. What kind of story would you like me to create today?' },
     { role: 'user', content: 'Write a fantasy story with dragons' }

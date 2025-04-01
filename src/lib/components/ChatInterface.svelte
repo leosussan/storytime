@@ -1,12 +1,13 @@
-<script>
+<script lang="ts">
   import { Avatar, Button, Spinner, Textarea } from 'flowbite-svelte';
+  import type { Message } from '$lib/types';
   
-  export let messages = [];
+  export let messages: Message[] = [];
   export let loading = false;
-  export let onSubmit = () => {};
+  export let onSubmit: (input: string) => void = () => {};
   
   let userInput = '';
-  let messagesContainer;
+  let messagesContainer: HTMLElement;
   
   function handleSubmit() {
     if (!userInput.trim()) return;
@@ -14,7 +15,7 @@
     userInput = '';
   }
   
-  function handleKeydown(event) {
+  function handleKeydown(event: KeyboardEvent) {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault();
       handleSubmit();

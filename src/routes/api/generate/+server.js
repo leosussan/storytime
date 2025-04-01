@@ -1,9 +1,11 @@
 import { json } from '@sveltejs/kit';
 import { OPENAI_API_KEY } from '$env/static/private';
+import type { RequestHandler } from './$types';
+import type { Message } from '$lib/types';
 
-export async function POST({ request }) {
+export const POST: RequestHandler = async ({ request }) => {
   try {
-    const { messages } = await request.json();
+    const { messages } = await request.json() as { messages: Message[] };
     
     // Use fetch to call OpenAI API directly instead of using the SDK
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -32,6 +34,6 @@ export async function POST({ request }) {
     return json({ response: data.choices[0].message });
   } catch (error) {
     console.error('Error:', error);
-    return json({ error: error.message }, { status: 500 });
+    return json({ error: error instanceof Error ? error.message : 'Unknown error' }, { status: 500 });
   }
 }

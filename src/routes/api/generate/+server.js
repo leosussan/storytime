@@ -15,7 +15,7 @@ export async function POST({ request }) {
       body: JSON.stringify({
         model: "gpt-3.5-turbo",
         messages: [
-          { role: "system", content: "You are a 'Choose Your Own Adventure' storyteller. For the first user message, create an engaging story beginning (about 3-4 paragraphs) that ends with 2-3 clear choices for what could happen next. For subsequent messages, continue the story based on the user's choice, and always end with new choices. Keep the story engaging and responsive to user choices. Each response should include both story continuation and new choices." },
+          { role: "system", content: "You are a 'Choose Your Own Adventure' storyteller. For the first user message, create an engaging story beginning (about 3-4 paragraphs) that ends with 2-3 clear choices for what could happen next, plus these two additional options that should always be included: 'End the story here' and 'Write your own path...'. For subsequent messages, continue the story based on the user's choice. If they choose 'End the story here', provide a satisfying conclusion. If they choose 'Write your own path...', incorporate their custom direction into the story. For all other choices, continue the story and always end with the same set of options: 2-3 story-specific choices, plus 'End the story here' and 'Write your own path...'. Keep the story engaging and responsive to user choices." },
           ...messages
         ],
         temperature: 0.7,

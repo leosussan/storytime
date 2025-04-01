@@ -36,7 +36,7 @@
 <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
   <div class="p-4 border-b border-gray-200 dark:border-gray-700">
     <h2 class="text-xl font-bold text-gray-800 dark:text-white">Choose Your Own Adventure</h2>
-    <p class="text-gray-600 dark:text-gray-400">Make choices to shape your story</p>
+    <p class="text-gray-600 dark:text-gray-400">Choose from options, write your own path, or end the story anytime</p>
   </div>
   
   <div 

@@ -2,7 +2,7 @@
   import ChatInterface from '$lib/components/ChatInterface.svelte';
   
   let messages = [
-    { role: 'assistant', content: 'Welcome to Choose Your Own Adventure! Describe the kind of story you\'d like to begin (fantasy, sci-fi, mystery, etc.), and I\'ll create the opening scene with choices for you to direct where the story goes next.' }
+    { role: 'assistant', content: 'Welcome to Choose Your Own Adventure! Describe the kind of story you\'d like to begin (fantasy, sci-fi, mystery, etc.), and I\'ll create the opening scene with choices for you to direct where the story goes next. At any point, you can choose to end the story or write your own custom path!' }
   ];
   let loading = false;
   

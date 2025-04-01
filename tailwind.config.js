@@ -8,8 +8,8 @@ export default {
     extend: {},
   },
   plugins: [
-    // Use dynamic import for flowbite plugin in ESM
-    (await import('flowbite/plugin')).default
+    // Use require for flowbite plugin
+    require('flowbite/plugin')
   ],
   darkMode: 'class'
 }

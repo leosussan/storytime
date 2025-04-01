@@ -44,7 +44,7 @@
         <div class="max-w-[80%] {message.role === 'user' ? 'bg-blue-500 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white'} rounded-lg p-3 shadow">
           {#if message.role === 'assistant'}
             <div class="flex items-center gap-2 mb-2 pb-2 border-b border-gray-300 dark:border-gray-600">
-              <Avatar src="/ai-avatar.png" alt="AI" class="w-8 h-8" />
+              <Avatar class="w-8 h-8" initials="AI" />
               <span class="font-semibold">AI Storyteller</span>
             </div>
           {/if}

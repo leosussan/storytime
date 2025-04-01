@@ -5,14 +5,19 @@
   import { generateStoryContent } from '$lib/services/api';
   import { storyStore, loadingStore, errorStore } from '$lib/stores/storyStore';
   import { onMount } from 'svelte';
+  import { isStoryConcluded } from '$lib/utils/storyExport';
   
   // Use the stores
   let messages = [];
   let loading = false;
   let error: string | null = null;
+  let storyEnded = false;
   
   // Subscribe to stores
-  storyStore.subscribe(value => messages = value);
+  storyStore.subscribe(value => {
+    messages = value;
+    storyEnded = isStoryConcluded(value);
+  });
   loadingStore.subscribe(value => loading = value);
   errorStore.subscribe(value => error = value);
   
@@ -87,7 +92,8 @@
     <ChatInterface 
       {messages} 
       {loading} 
-      onSubmit={handleSubmit} 
+      onSubmit={handleSubmit}
+      showExport={storyEnded}
     />
   </div>
   

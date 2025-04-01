@@ -2,10 +2,12 @@
   import { Avatar, Button, Spinner, Textarea } from 'flowbite-svelte';
   import { onMount, afterUpdate } from 'svelte';
   import type { Message } from '$lib/types';
+  import { isStoryConcluded, exportStoryAsText } from '$lib/utils/storyExport';
   
   export let messages: Message[] = [];
   export let loading = false;
   export let onSubmit: (input: string) => void;
+  export let showExport = false;
   
   let userInput = '';
   let messagesContainer: HTMLElement;
@@ -21,6 +23,10 @@
       event.preventDefault();
       handleSubmit();
     }
+  }
+  
+  function handleExport() {
+    exportStoryAsText(messages);
   }
   
   // Auto-scroll to bottom when messages change
@@ -73,6 +79,17 @@
       </div>
     {/if}
   </div>
+  
+  {#if showExport}
+    <div class="p-2 bg-gray-100 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 flex justify-center">
+      <Button color="green" on:click={handleExport}>
+        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+        </svg>
+        Export Story
+      </Button>
+    </div>
+  {/if}
   
   <div class="p-4 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
     <div class="flex gap-2">

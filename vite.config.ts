@@ -1,8 +1,12 @@
 import { svelteTesting } from '@testing-library/svelte/vite';
 import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 
-export default defineConfig({
+export default defineConfig(({ mode }) => {
+	// Load env file named ".local.env"
+	process.env = {...process.env, ...loadEnv(mode, process.cwd(), '.local')};
+	
+	return {
 	plugins: [sveltekit()],
 	test: {
 		workspace: [
@@ -29,4 +33,5 @@ export default defineConfig({
 			}
 		]
 	}
+	};
 });

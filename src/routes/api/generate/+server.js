@@ -1,4 +1,3 @@
-import { OpenAI } from 'openai';
 import { json } from '@sveltejs/kit';
 import { OPENAI_API_KEY } from '$env/static/private';
 
@@ -6,21 +5,12 @@ export async function POST({ request }) {
   try {
     const { messages } = await request.json();
     
-    const openai = new OpenAI({
-      apiKey: OPENAI_API_KEY
-    });
+    // Mock response for development without OpenAI API
+    const mockResponse = {
+      content: "This is a mock story response while the OpenAI integration is being set up.\n\nOnce upon a time in a land far away, there lived a curious explorer who loved to discover new places. Every day brought a new adventure, and today was no different. As the sun rose over the misty mountains, our hero prepared for the journey ahead..."
+    };
     
-    const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages: [
-        { role: "system", content: "You are a creative storyteller. Create engaging and imaginative stories based on user prompts." },
-        ...messages
-      ],
-      temperature: 0.7,
-      max_tokens: 500
-    });
-    
-    return json({ response: response.choices[0].message });
+    return json({ response: mockResponse });
   } catch (error) {
     console.error('Error:', error);
     return json({ error: error.message }, { status: 500 });

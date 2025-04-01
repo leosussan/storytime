@@ -1,6 +1,7 @@
 <script lang="ts">
   import ChatInterface from '$lib/components/ChatInterface.svelte';
   import ErrorMessage from '$lib/components/ErrorMessage.svelte';
+  import { Button } from 'flowbite-svelte';
   import { generateStoryContent } from '$lib/services/api';
   import { storyStore, loadingStore, errorStore } from '$lib/stores/storyStore';
   import { onMount } from 'svelte';

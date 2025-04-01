@@ -83,11 +83,13 @@
     {/if}
   </div>
   
-  <ChatInterface 
-    {messages} 
-    {loading} 
-    onSubmit={handleSubmit} 
-  />
+  <div class="flex-grow flex flex-col min-h-0">
+    <ChatInterface 
+      {messages} 
+      {loading} 
+      onSubmit={handleSubmit} 
+    />
+  </div>
   
   <div class="mt-4 text-center text-xs text-gray-500 dark:text-gray-400">
     <p>Powered by OpenAI's GPT-3.5 Turbo | Choose your path and shape your adventure</p>

@@ -1,6 +1,5 @@
 <script>
   import ChatInterface from '$lib/components/ChatInterface.svelte';
-  import { Card } from 'flowbite-svelte';
   
   let messages = [
     { role: 'assistant', content: 'Hello! I\'m your AI storyteller. What kind of story would you like me to create today?' }
@@ -50,22 +49,14 @@
   <title>AI Story Creator</title>
 </svelte:head>
 
-<div class="max-w-4xl mx-auto">
-  <Card class="mb-6">
-    <h1 class="text-3xl font-bold text-center mb-2 text-gray-900 dark:text-white">AI Story Creator</h1>
-    <p class="text-center text-gray-600 dark:text-gray-400">
-      Unleash your imagination and let our AI help you craft amazing stories.
-      Just describe what you'd like to create, and watch your ideas come to life!
-    </p>
-  </Card>
-  
+<div class="h-full">
   <ChatInterface 
     messages={messages} 
     {loading} 
     onSubmit={handleSubmit} 
   />
   
-  <div class="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
-    <p>Powered by OpenAI's GPT-3.5 Turbo. Create stories, poems, adventures, and more!</p>
+  <div class="mt-2 text-center text-xs text-gray-500 dark:text-gray-400">
+    <p>Powered by OpenAI's GPT-3.5 Turbo</p>
   </div>
 </div>

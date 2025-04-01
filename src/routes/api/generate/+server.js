@@ -3,7 +3,7 @@ import { OPENAI_API_KEY } from '$env/static/private';
 import type { RequestHandler } from './$types';
 import type { Message } from '$lib/types';
 
-export const POST: RequestHandler = async ({ request }) => {
+export const POST = (async ({ request }) => {
   try {
     const { messages } = await request.json() as { messages: Message[] };
     

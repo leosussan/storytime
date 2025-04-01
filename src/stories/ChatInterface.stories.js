@@ -10,7 +10,7 @@ const meta = {
     loading: { control: 'boolean' },
     onSubmit: { action: 'submitted' }
   }
-} satisfies Meta<ChatInterface>;
+} as Meta<typeof ChatInterface>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

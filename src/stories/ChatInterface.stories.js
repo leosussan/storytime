@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/svelte';
 import ChatInterface from '../lib/components/ChatInterface.svelte';
 import type { Message } from '$lib/types';
 
-const meta = {
+const meta: Meta<typeof ChatInterface> = {
   title: 'Components/ChatInterface',
   component: ChatInterface,
   argTypes: {
@@ -10,7 +10,7 @@ const meta = {
     loading: { control: 'boolean' },
     onSubmit: { action: 'submitted' }
   }
-} as Meta<typeof ChatInterface>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;

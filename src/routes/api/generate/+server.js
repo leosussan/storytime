@@ -5,12 +5,31 @@ export async function POST({ request }) {
   try {
     const { messages } = await request.json();
     
-    // Mock response for development without OpenAI API
-    const mockResponse = {
-      content: "This is a mock story response while the OpenAI integration is being set up.\n\nOnce upon a time in a land far away, there lived a curious explorer who loved to discover new places. Every day brought a new adventure, and today was no different. As the sun rose over the misty mountains, our hero prepared for the journey ahead..."
-    };
+    // Use fetch to call OpenAI API directly instead of using the SDK
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${OPENAI_API_KEY}`
+      },
+      body: JSON.stringify({
+        model: "gpt-3.5-turbo",
+        messages: [
+          { role: "system", content: "You are a creative storyteller. Create engaging and imaginative stories based on user prompts." },
+          ...messages
+        ],
+        temperature: 0.7,
+        max_tokens: 500
+      })
+    });
     
-    return json({ response: mockResponse });
+    const data = await response.json();
+    
+    if (!response.ok) {
+      throw new Error(data.error?.message || 'Failed to generate story');
+    }
+    
+    return json({ response: data.choices[0].message });
   } catch (error) {
     console.error('Error:', error);
     return json({ error: error.message }, { status: 500 });

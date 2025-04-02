@@ -1,22 +1,38 @@
-# sv
+# Interactive Story Adventure
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+An AI-powered interactive storytelling application built with SvelteKit that lets users create and explore their own adventure stories.
 
-## Creating a project
+## Features
 
-If you're seeing this, you've probably already done this step. Congrats!
+- Dynamic story generation using OpenAI's API
+- Interactive chat-like interface for story progression
+- Multiple choice and free-form response options
+- Story saving and persistence between sessions
+- Export your completed stories as text files
+- Responsive design for desktop and mobile
 
-```bash
-# create a new project in the current directory
-npx sv create
+## Getting Started
 
-# create a new project in my-app
-npx sv create my-app
-```
+### Prerequisites
 
-## Developing
+- Node.js (v16 or newer)
+- An OpenAI API key
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+### Setup
+
+1. Clone this repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Create a `.env` file in the root directory with your OpenAI API key:
+   ```
+   OPENAI_API_KEY=your_api_key_here
+   ```
+
+### Development
+
+Start the development server:
 
 ```bash
 npm run dev
@@ -25,14 +41,36 @@ npm run dev
 npm run dev -- --open
 ```
 
-## Building
+### Building for Production
 
-To create a production version of your app:
+Create a production build:
 
 ```bash
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
+Preview the production build:
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```bash
+npm run preview
+```
+
+## How It Works
+
+1. The application presents users with an initial story prompt
+2. Users can select from suggested options or write their own responses
+3. The AI generates the next part of the story based on user input
+4. The story continues until the user chooses to end it
+5. Completed stories can be exported as text files
+
+## Technologies
+
+- SvelteKit
+- TypeScript
+- Tailwind CSS
+- OpenAI API
+- Vitest for testing
+
+## License
+
+[MIT](LICENSE)

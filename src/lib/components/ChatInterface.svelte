@@ -3,6 +3,7 @@
   import { onMount, afterUpdate } from 'svelte';
   import type { Message } from '$lib/types';
   import { isStoryConcluded, exportStoryAsText } from '$lib/utils/storyExport';
+  import { formatStoryText } from '$lib/utils/storyFormatter';
   
   export let messages: Message[] = [];
   export let loading = false;
@@ -65,7 +66,13 @@
               <span class="font-semibold">AI Storyteller</span>
             </div>
           {/if}
-          <p class="whitespace-pre-line">{message.content}</p>
+          <p class="whitespace-pre-line">
+            {#if message.role === 'assistant'}
+              {@html formatStoryText(message.content)}
+            {:else}
+              {message.content}
+            {/if}
+          </p>
         </div>
       </div>
     {/each}
@@ -130,5 +137,18 @@
   .messages::-webkit-scrollbar-thumb {
     background-color: rgba(156, 163, 175, 0.5);
     border-radius: 3px;
+  }
+  
+  :global(.option) {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-left: 3px solid #3b82f6;
+    border-radius: 0.25rem;
+  }
+
+  :global(.dark .option) {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid #3b82f6;
   }
 </style>
